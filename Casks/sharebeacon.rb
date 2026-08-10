@@ -7,7 +7,19 @@ cask "sharebeacon" do
   desc "Keep SMB shares available and restore Finder sidebar favorites"
   homepage "https://github.com/mjoe/sharebeacon"
 
+  depends_on macos: ">= :tahoe"
+
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
+
   app "ShareBeacon.app"
+
+  zap trash: [
+    "~/Library/Logs/sharebeacon.log",
+    "~/Library/Preferences/com.mjoe.sharebeacon.plist",
+  ]
 
   caveats <<~EOS
     ShareBeacon runs from the menu bar. Open Settings from the menu bar icon to
