@@ -7,12 +7,12 @@ cask "sharebeacon" do
   desc "Keep SMB shares available and restore Finder sidebar favorites"
   homepage "https://github.com/mjoe/sharebeacon"
 
-  depends_on macos: ">= :tahoe"
-
   livecheck do
     url :url
     strategy :github_latest
   end
+
+  depends_on macos: :tahoe
 
   app "ShareBeacon.app"
 
